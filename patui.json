@@ -11,9 +11,6 @@
     },
     "extract_dir": "patui-v0.1.0-windows-x86_64",
     "bin": "patui.exe",
-    "env_set": {
-        "NODE_PATH": "$dir\\sharp"
-    },
     "checkver": "github",
     "autoupdate": {
         "architecture": {
