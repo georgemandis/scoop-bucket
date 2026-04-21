@@ -1,0 +1,23 @@
+{
+    "version": "0.1.0",
+    "description": "Computer vision CLI — detect faces, read text, and scan barcodes using native OS APIs",
+    "homepage": "https://github.com/georgemandis/loupe",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/georgemandis/loupe/releases/download/v0.1.0/loupe-v0.1.0-windows-x86_64.zip",
+            "hash": "3e685bca0312c2ad6c030a155e4d4fd260f14b2153b51a06fa624b5be70274aa"
+        }
+    },
+    "extract_dir": "loupe-v0.1.0-windows-x86_64",
+    "bin": "loupe.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/georgemandis/loupe/releases/download/v$version/loupe-v$version-windows-x86_64.zip"
+            }
+        },
+        "extract_dir": "loupe-v$version-windows-x86_64"
+    }
+}
