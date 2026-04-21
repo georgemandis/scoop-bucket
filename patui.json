@@ -10,7 +10,11 @@
         }
     },
     "extract_dir": "patui-v0.1.0-windows-x86_64",
-    "bin": "patui.exe",
+    "pre_install": [
+        "$wrapper = \"@echo off`r`nset PATUI_CWD=%CD%`r`ncd /d `\"$dir`\"`r`n`\"$dir\\patui.exe`\" %*\"",
+        "Set-Content \"$dir\\patui.cmd\" $wrapper -Encoding ASCII"
+    ],
+    "bin": "patui.cmd",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
