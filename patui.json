@@ -1,0 +1,24 @@
+{
+    "version": "0.1.0",
+    "description": "Terminal-based image editor with Vim-style modal controls",
+    "homepage": "https://github.com/georgemandis/patui",
+    "license": "MIT",
+    "depends": "bun",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/georgemandis/patui/releases/download/v0.1.0/patui-v0.1.0-windows-x86_64.zip",
+            "hash": "PLACEHOLDER"
+        }
+    },
+    "extract_dir": "patui-v0.1.0-windows-x86_64",
+    "bin": "patui.cmd",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/georgemandis/patui/releases/download/v$version/patui-v$version-windows-x86_64.zip"
+            }
+        },
+        "extract_dir": "patui-v$version-windows-x86_64"
+    }
+}
