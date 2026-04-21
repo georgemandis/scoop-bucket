@@ -7,7 +7,7 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/georgemandis/patui/releases/download/v0.1.0/patui-v0.1.0-windows-x86_64.zip",
-            "hash": "PLACEHOLDER"
+            "hash": "4dcb3d2d51dd53fd3e7141c21df62402f05a2d2392849240b5b2acd148a8600d"
         }
     },
     "extract_dir": "patui-v0.1.0-windows-x86_64",
