@@ -1,15 +1,15 @@
 {
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Terminal-based image editor with Vim-style modal controls",
     "homepage": "https://github.com/georgemandis/patui",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/georgemandis/patui/releases/download/v0.2.0/patui-v0.2.0-windows-x86_64.zip",
-            "hash": "0a250ad90a5d4d3d47db49da8f7862fe797737b95c78317ecdc8af746c1096d1"
+            "url": "https://github.com/georgemandis/patui/releases/download/v0.2.1/patui-v0.2.1-windows-x86_64.zip",
+            "hash": "5edd9636e5a4c3537e5ac624d90d57a4c4e61469e021fd3157c3617e4c678c14"
         }
     },
-    "extract_dir": "patui-v0.2.0-windows-x86_64",
+    "extract_dir": "patui-v0.2.1-windows-x86_64",
     "pre_install": [
         "$wrapper = \"@echo off`r`nset PATUI_CWD=%CD%`r`ncd /d `\"$dir`\"`r`n`\"$dir\\patui.exe`\" %*\"",
         "Set-Content \"$dir\\patui.cmd\" $wrapper -Encoding ASCII"
