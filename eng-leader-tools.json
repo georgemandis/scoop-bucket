@@ -1,13 +1,13 @@
 {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Bash scripts for engineering leadership metrics — DORA, PR health, review load, and more",
     "homepage": "https://github.com/georgemandis/eng-leader-tools",
     "license": "MIT",
     "notes": "Requires gh (GitHub CLI) and jq. Run 'eng --help' to get started.",
     "depends": ["main/gh", "main/jq"],
-    "url": "https://github.com/georgemandis/eng-leader-tools/archive/refs/tags/v0.1.0.tar.gz",
-    "hash": "1638c8db457832a7404f79a638db9164451621f57c4f88714cbe1b1a550bda31",
-    "extract_dir": "eng-leader-tools-0.1.0",
+    "url": "https://github.com/georgemandis/eng-leader-tools/archive/refs/tags/v0.1.1.tar.gz",
+    "hash": "fca5f59f8e811b9f57cec6e40b203a2fc14d0ad5515b8b56f219499ebc0b27af",
+    "extract_dir": "eng-leader-tools-0.1.1",
     "bin": "eng",
     "checkver": {
         "github": "https://github.com/georgemandis/eng-leader-tools"
