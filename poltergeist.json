@@ -1,0 +1,32 @@
+{
+    "version": "0.1.0",
+    "description": "Cross-platform accessibility CLI for inspecting UI elements and managing windows",
+    "homepage": "https://github.com/georgemandis/poltergeist",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/georgemandis/poltergeist/releases/download/v0.1.0/poltergeist-v0.1.0-windows-x86_64.zip",
+            "hash": "3544a6dea3942bdf3535488746ffb0f0e4dd1afed3ad0f9da3241b109d539352",
+            "extract_dir": "poltergeist-v0.1.0-windows-x86_64"
+        },
+        "arm64": {
+            "url": "https://github.com/georgemandis/poltergeist/releases/download/v0.1.0/poltergeist-v0.1.0-windows-aarch64.zip",
+            "hash": "b6c2c78369bc31a4fd43ad0fb2189a9c838efaea5521e5f02bcde5100aeaaeff",
+            "extract_dir": "poltergeist-v0.1.0-windows-aarch64"
+        }
+    },
+    "bin": "poltergeist.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/georgemandis/poltergeist/releases/download/v$version/poltergeist-v$version-windows-x86_64.zip",
+                "extract_dir": "poltergeist-v$version-windows-x86_64"
+            },
+            "arm64": {
+                "url": "https://github.com/georgemandis/poltergeist/releases/download/v$version/poltergeist-v$version-windows-aarch64.zip",
+                "extract_dir": "poltergeist-v$version-windows-aarch64"
+            }
+        }
+    }
+}
