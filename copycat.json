@@ -1,15 +1,15 @@
 {
-    "version": "0.4.3",
+    "version": "0.4.4",
     "description": "A cross-platform clipboard CLI and C ABI library written in Zig",
     "homepage": "https://github.com/georgemandis/copycat",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/georgemandis/copycat/releases/download/v0.4.3/copycat-v0.4.3-windows-x86_64.zip",
-            "hash": "5d65df424fa009a9512223ae88e5cf7361a801b60364fe42621ecbd6584edda6"
+            "url": "https://github.com/georgemandis/copycat/releases/download/v0.4.4/copycat-v0.4.4-windows-x86_64.zip",
+            "hash": "208f60e397750533250a5e27401238429ebf65676033c814c7ac4684cced5637"
         }
     },
-    "extract_dir": "copycat-v0.4.3-windows-x86_64",
+    "extract_dir": "copycat-v0.4.4-windows-x86_64",
     "bin": "copycat.exe",
     "checkver": "github",
     "autoupdate": {
