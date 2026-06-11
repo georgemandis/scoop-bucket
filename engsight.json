@@ -1,0 +1,18 @@
+{
+    "version": "1.0.0",
+    "description": "Personal engineering metrics, collected passively via git hooks",
+    "homepage": "https://github.com/georgemandis/engsight",
+    "license": "MIT",
+    "notes": "Run 'install.sh' after installing to set up ~/.engsight. Then 'engsight init' in your repos. MCP server requires Bun (https://bun.sh).",
+    "url": "https://github.com/georgemandis/engsight/archive/refs/tags/v1.0.0.tar.gz",
+    "hash": "bf2af050c873095dfa79f2ed128ef44d35b19ef403c2189cf6c346e76a8ba8f8",
+    "extract_dir": "engsight-1.0.0",
+    "bin": "engsight",
+    "post_install": "Write-Host 'Run install.sh to complete setup: & \"$dir\\install.sh\"' -ForegroundColor Yellow",
+    "checkver": {
+        "github": "https://github.com/georgemandis/engsight"
+    },
+    "autoupdate": {
+        "url": "https://github.com/georgemandis/engsight/archive/refs/tags/v$version.tar.gz"
+    }
+}
