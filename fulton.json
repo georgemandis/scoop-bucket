@@ -1,15 +1,15 @@
 {
-    "version": "0.3.1",
+    "version": "0.3.2",
     "description": "Cross-platform global keyboard shortcut daemon and C ABI library written in Zig",
     "homepage": "https://github.com/georgemandis/fulton",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/georgemandis/fulton/releases/download/v0.3.1/fulton-v0.3.1-windows-x86_64.zip",
-            "hash": "931b17257474da0f4321bdf4cb07fb46b38373c64df3f155bf90e1b791eaf5f3"
+            "url": "https://github.com/georgemandis/fulton/releases/download/v0.3.2/fulton-v0.3.2-windows-x86_64.zip",
+            "hash": "de59ee4ed00dc2f478b8ea8bcce1540c013834bfa4996aeb3b2f53eeb29e87d3"
         }
     },
-    "extract_dir": "fulton-v0.3.1-windows-x86_64",
+    "extract_dir": "fulton-v0.3.2-windows-x86_64",
     "bin": "fulton.exe",
     "checkver": "github",
     "autoupdate": {
