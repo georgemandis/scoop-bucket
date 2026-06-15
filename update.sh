@@ -19,13 +19,27 @@ update_manifest() {
   local repo
   repo=$(echo "$homepage" | sed 's|https://github.com/||')
 
+  # Optional tag prefix for monorepo-resident tools (custom field Scoop ignores)
+  local tag_prefix
+  tag_prefix=$(python3 -c "import json; print(json.load(open('$json')).get('tag_prefix',''))" 2>/dev/null || echo "")
+
   # Get latest release tag
-  local latest
-  latest=$(gh release view --repo "$repo" --json tagName -q .tagName 2>/dev/null) || {
-    echo "  ⏭  $name: no releases found, skipping"
-    return
-  }
-  local latest_version="${latest#v}"
+  local latest latest_version
+  if [ -n "$tag_prefix" ]; then
+    # Monorepo: pick the latest release whose tag starts with this product's prefix.
+    latest=$(gh release list --repo "$repo" --limit 100 --json tagName -q "[.[].tagName | select(startswith(\"$tag_prefix\"))] | .[0]" 2>/dev/null) || latest=""
+    if [ -z "$latest" ] || [ "$latest" = "null" ]; then
+      echo "  ⏭  $name: no $tag_prefix* releases, skipping"
+      return
+    fi
+    latest_version="${latest#$tag_prefix}"
+  else
+    latest=$(gh release view --repo "$repo" --json tagName -q .tagName 2>/dev/null) || {
+      echo "  ⏭  $name: no releases found, skipping"
+      return
+    }
+    latest_version="${latest#v}"
+  fi
 
   # Get current version
   local current
