@@ -1,0 +1,24 @@
+{
+    "version": "0.1.0",
+    "description": "Freeze merges across your GitHub org from the terminal",
+    "homepage": "https://github.com/georgemandis/little-money-ideas",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/georgemandis/little-money-ideas/releases/download/holdline-v0.1.0/holdline-v0.1.0-windows-x86_64.zip",
+            "hash": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+    },
+    "bin": "holdline.exe",
+    "checkver": {
+        "github": "https://github.com/georgemandis/little-money-ideas",
+        "regex": "holdline-v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/georgemandis/little-money-ideas/releases/download/holdline-v$version/holdline-v$version-windows-x86_64.zip"
+            }
+        }
+    }
+}
