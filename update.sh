@@ -27,7 +27,7 @@ update_manifest() {
   local latest latest_version
   if [ -n "$tag_prefix" ]; then
     # Monorepo: pick the latest release whose tag starts with this product's prefix.
-    latest=$(gh release list --repo "$repo" --limit 100 --json tagName -q "[.[].tagName | select(startswith(\"$tag_prefix\"))] | .[0]" 2>/dev/null) || latest=""
+    latest=$(gh release list --repo "$repo" --limit 100 --json tagName -q "[.[].tagName | select(startswith(\"$tag_prefix\"))] | .[0]" 2>/dev/null | tr -d '\r') || latest=""
     if [ -z "$latest" ] || [ "$latest" = "null" ]; then
       echo "  ⏭  $name: no $tag_prefix* releases, skipping"
       return
@@ -45,7 +45,7 @@ update_manifest() {
   local current
   current=$(python3 -c "import json; print(json.load(open('$json'))['version'])")
 
-  if [ "$current" = "$latest_version" ]; then
+  if [ "$current" = "$latest_version" ] && ! grep -q '"hash":[[:space:]]*"0\{64\}"' "$json"; then
     echo "  ✓  $name: already at $current"
     return
   fi

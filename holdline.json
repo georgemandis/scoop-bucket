@@ -7,7 +7,7 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/georgemandis/little-money-ideas/releases/download/holdline-v0.1.0/holdline-v0.1.0-windows-x86_64.zip",
-            "hash": "0000000000000000000000000000000000000000000000000000000000000000"
+            "hash": "4c7ced4a04ff66037147504f00d496ea34bbaaffb2551510d06c27ce5b12834e"
         }
     },
     "bin": "holdline.exe",
