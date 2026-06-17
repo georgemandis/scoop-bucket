@@ -75,8 +75,13 @@ with open('$json', 'w') as f:
 "
 
   # Read the finalized URL back, hash exactly that (what Scoop will download).
+  # Use the SAME arch-first shape check as the version-bump and hash-write passes,
+  # so a manifest carrying both keys can't read one URL but write the hash elsewhere.
   local url
-  url=$(python3 -c "import json; d=json.load(open('$json')); print(d.get('url') or d.get('architecture',{}).get('64bit',{}).get('url',''))")
+  url=$(python3 -c "import json
+d = json.load(open('$json'))
+arch = d.get('architecture', {}).get('64bit')
+print(arch['url'] if arch else d.get('url', ''))")
   local sha
   sha=$(set -o pipefail; curl -fsSL "$url" | shasum -a 256 | awk '{print $1}')
   local curl_rc=$?
