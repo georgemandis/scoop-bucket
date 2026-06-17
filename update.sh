@@ -52,55 +52,54 @@ update_manifest() {
 
   echo "  ↑  $name: $current → $latest_version"
 
-  # Download the windows asset
-  local tmpdir
-  tmpdir=$(mktemp -d)
-  gh release download "$latest" --repo "$repo" --dir "$tmpdir" --pattern "*windows*.zip" 2>/dev/null || {
-    echo "       no windows zip found, skipping"
-    rm -rf "$tmpdir"
-    return
-  }
-
-  local asset
-  asset=$(ls "$tmpdir"/*.zip 2>/dev/null | head -1)
-  if [ -z "$asset" ]; then
-    echo "       no zip asset downloaded, skipping"
-    rm -rf "$tmpdir"
-    return
-  fi
-
-  local sha
-  sha=$(shasum -a 256 "$asset" | awk '{print $1}')
-
-  # Update version, url, hash, and extract_dir using python3 for safe JSON editing
+  # Pass 1: bump version + URL + extract_dir for whichever shape this manifest
+  # uses (flat top-level url/hash, or architecture.64bit). Writes the file so the
+  # finalized URL can be hashed next.
   python3 -c "
-import json, re
-
+import json
 with open('$json') as f:
     data = json.load(f)
-
 old_ver = data['version']
 new_ver = '$latest_version'
-
 data['version'] = new_ver
-
-# Update architecture URL and hash
 if 'architecture' in data and '64bit' in data['architecture']:
     arch = data['architecture']['64bit']
     arch['url'] = arch['url'].replace(old_ver, new_ver)
-    arch['hash'] = '$sha'
-
-# Update extract_dir
+elif 'url' in data:
+    data['url'] = data['url'].replace(old_ver, new_ver)
 if 'extract_dir' in data:
     data['extract_dir'] = data['extract_dir'].replace(old_ver, new_ver)
-
 with open('$json', 'w') as f:
     json.dump(data, f, indent=4, ensure_ascii=False)
     f.write('\n')
 "
 
-  rm -rf "$tmpdir"
-  echo "       updated $json"
+  # Read the finalized URL back, hash exactly that (what Scoop will download).
+  local url
+  url=$(python3 -c "import json; d=json.load(open('$json')); print(d.get('url') or d.get('architecture',{}).get('64bit',{}).get('url',''))")
+  local sha
+  sha=$(set -o pipefail; curl -fsSL "$url" | shasum -a 256 | awk '{print $1}')
+  local curl_rc=$?
+  if [ "$curl_rc" -ne 0 ] || [ -z "$sha" ]; then
+    echo "  ✗  $name: failed to hash $url (curl exit $curl_rc)" >&2
+    return 1
+  fi
+
+  # Pass 2: write the hash into the matching field (arch or flat).
+  python3 -c "
+import json
+with open('$json') as f:
+    data = json.load(f)
+if 'architecture' in data and '64bit' in data['architecture']:
+    data['architecture']['64bit']['hash'] = '$sha'
+else:
+    data['hash'] = '$sha'
+with open('$json', 'w') as f:
+    json.dump(data, f, indent=4, ensure_ascii=False)
+    f.write('\n')
+"
+
+  echo "       updated $json ($latest_version)"
 }
 
 if [ $# -gt 0 ]; then
