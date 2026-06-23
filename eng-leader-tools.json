@@ -1,21 +1,33 @@
 {
-    "version": "0.3.1",
+    "version": "0.3.2",
     "description": "Bash scripts for engineering leadership metrics — DORA, PR health, review load, and more",
     "homepage": "https://github.com/georgemandis/eng-leader-tools",
     "license": "MIT",
-    "notes": "Requires gh (GitHub CLI) and jq. Run 'eng --help' to get started.",
+    "notes": "Requires gh (GitHub CLI) and jq. Run 'eng --help' to get started. The compiled MCP server (eng-mcp.exe) is installed alongside; run 'eng mcp install' to register it.",
     "depends": [
         "main/gh",
         "main/jq"
     ],
-    "url": "https://github.com/georgemandis/eng-leader-tools/archive/refs/tags/v0.3.1.tar.gz",
-    "hash": "901e5fa74298a4a1621d1b71c5f992637b7f117a4b6459ef960b3ca768aae4c4",
-    "extract_dir": "eng-leader-tools-0.3.1",
+    "url": [
+        "https://github.com/georgemandis/eng-leader-tools/archive/refs/tags/v0.3.2.tar.gz",
+        "https://github.com/georgemandis/eng-leader-tools/releases/download/v0.3.2/eng-mcp-v0.3.2-windows-x86_64.zip"
+    ],
+    "hash": [
+        "f38c1f896995f11473fec9a2be71699d24af829f71bdf8dbc57652db85ba305a",
+        "e8d5d654c0464703b8cfeedda8e8c8e54e379c2b8b85abf6d591e112e49de775"
+    ],
+    "extract_dir": [
+        "eng-leader-tools-0.3.2",
+        ""
+    ],
     "bin": "eng",
     "checkver": {
         "github": "https://github.com/georgemandis/eng-leader-tools"
     },
     "autoupdate": {
-        "url": "https://github.com/georgemandis/eng-leader-tools/archive/refs/tags/v$version.tar.gz"
+        "url": [
+            "https://github.com/georgemandis/eng-leader-tools/archive/refs/tags/v$version.tar.gz",
+            "https://github.com/georgemandis/eng-leader-tools/releases/download/v$version/eng-mcp-v$version-windows-x86_64.zip"
+        ]
     }
 }
