@@ -1,15 +1,15 @@
 {
-    "version": "0.3.3",
+    "version": "0.4.0",
     "description": "Get your current location from the command line using native OS APIs",
     "homepage": "https://github.com/georgemandis/whereami",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/georgemandis/whereami/releases/download/v0.3.3/whereami-v0.3.3-windows-x86_64.zip",
-            "hash": "b09f19139a0cc49813a766f1f93b12e4327f76806bde79c4c74ab18341f1fd99"
+            "url": "https://github.com/georgemandis/whereami/releases/download/v0.4.0/whereami-v0.4.0-windows-x86_64.zip",
+            "hash": "07d419ea086ac03f1361a07c87c290744973a1f9e8c6ed719d854bd1dd4a6212"
         }
     },
-    "extract_dir": "whereami-v0.3.3-windows-x86_64",
+    "extract_dir": "whereami-v0.4.0-windows-x86_64",
     "bin": "whereami.exe",
     "checkver": "github",
     "autoupdate": {
